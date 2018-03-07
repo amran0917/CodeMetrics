@@ -1,3 +1,6 @@
+
+##### some of error###
+
 #include<bits/stdc++.h>
 #include<iostream>
 #include<fstream>
