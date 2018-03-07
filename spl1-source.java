@@ -12,7 +12,7 @@ Public class SPL_1{
         int a,f; // ///////declaration integer
         float f; // declaration float
 
-        a = input.nextInt(); // take input
+        a = input.nextInt(); // take input integer
         f = input.nextDouble(); // take float
        /*
         d = input.nextDouble();
