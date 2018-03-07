@@ -110,16 +110,19 @@ void countCommentlineNumber()
 int withoutBlankLinecount(string &str)
 {
 
-            int len = str.length();
+
+    if(str.length()==0) wcount++;
+          /*  int length = str.length();
+            cout<< length<<endl;
             wcount++;
-            for (int i = 0; i < len; i++) {
+            for (int i = 0; i < length; i++) {
                 if (str[i] != '\n' && str[i] != '\t' && str[i] != ' ') {
                     wcount--;
                     break;
                 }
-            }
+            }*/
 
-        return wcount;
+            return wcount;
 }
 
 int countTotalLineOfCode(string &str)
