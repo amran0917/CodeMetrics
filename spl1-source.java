@@ -1,26 +1,23 @@
-#include<bits/stdc++.h>
 
-using namspace std;
+Public class SPL_1{
 
-int main()
-{
+    public static void main(String [] args)
+    {
 
-/* amrat
-dsr sl
-askd f
-a dlfak;*/
-//
-// heloo
-//java
-
-int a,b,c;
-float d,e;
-string s;
-char ch;
-
-	cout<<"Assalamu alaikum" << endl;
-	return 0;
+        Scanner input = new Scanner(System.in); // scan from user
+        SPL_1 spl;
+        spl = new SPL_1(); // creating a object
 
 
+        int a,f; // ///////declaration integer
+        float f; // declaration float
 
+        a = input.nextInt(); // take input
+        f = input.nextDouble(); // take float
+       /*
+        d = input.nextDouble();
+        s = "amarn";
+        System.out.println("amra"); */
+
+    }
 }
