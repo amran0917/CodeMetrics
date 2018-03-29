@@ -6,10 +6,10 @@ Public class SPL_1{
 
         Scanner input = new Scanner(System.in); // scan from user
         SPL_1 spl;
-        spl = new SPL_1(); // creating a object
+        spl = new SPL_1();
 
 
-        int a,f; // ///////declaration integer
+        int a,f;  ///////declaration integer
         float f; // declaration float
 
         a = input.nextInt(); // take input integer
