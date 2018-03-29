@@ -10,3 +10,5 @@ this is work to code metric analysis
 #cohesion
 #parameter
 
+remain coupling,cohesion,parameter
+
