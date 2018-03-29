@@ -25,6 +25,7 @@ ofstream ofile;
 
 void  countMethod()
 {
+    bool flag = false;
     string s;
     string s1="";
     string temp;
@@ -39,24 +40,36 @@ void  countMethod()
         while(getline(ifile,s))
         {
 
+
+
             int n = s.length();
+            temp = s;
             char arr[n];
 
-            for(int i=0;i<s.length();i++)
+            for(int j=0;j<s.length();j++)
             {
-                    if(s[i]=='('){
+               if(s[j]=='('&&s[s.length()-1]!=';'){
+                cout<<s<<endl;
+                                   countmethod++;
 
-                            ch=s[i];
-                            break;
-                    }
-
-                    else
+                    for(int i=0;i<s.length();i++)
                     {
-                        arr[i]=s[i];
+                            if(s[i]=='('){
+
+                                    ch=s[i];
+                                    break;
+                            }
+
+                            else
+                            {
+                                arr[i]=s[i];
+                            }
+
+
                     }
+               }
+            }
 
-
-        }
             s=arr;
             istringstream iss(s);
 
@@ -64,29 +77,31 @@ void  countMethod()
 
             while(iss>>s){
 
-                    temp = s;
+
                     len++;
            }
 
 
-            if((len==2||len==3)&&ch=='(' && s[n-1]!=';')
+            if((len==2||len==3)&&ch=='(' && temp[n-1]!=';')
             {
                    // cout<<"this is method"<<endl;
-                   countmethod++;
+                   //countmethod++;
             }
 
             else
             {
-                cout<<"haire gada" << endl;
+              flag = false;
+                //cout<<"haire gada" << endl;
            }
 
-
+            ch=' ';
 
         }
 
     }
+    if (flag) cout<<"haire gada" << endl;
+    else cout<< "Hey Number Of Method in here " << countmethod<<endl;
 
-    cout<< "Hey Number Of Method in here " << countmethod<<endl;
 
     ifile.close();
 
@@ -252,7 +267,7 @@ int main()
 {
 	openfile();
 	//countCommentlineNumber();
-	//countMethod();
+	countMethod();
 
 
 	return 0;
