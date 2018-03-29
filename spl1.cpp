@@ -1,5 +1,5 @@
 
-##### some of error###
+## few erroe detection###
 
 #include<bits/stdc++.h>
 #include<iostream>
