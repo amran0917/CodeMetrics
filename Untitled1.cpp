@@ -46,7 +46,7 @@ int main ()
     }
     cout<<len<<endl;
 
-    if((len==2||len==3)&&ch=='('){
+    if((len==2||len==3)&&ch=='(' && s[n-1]!=';'){
         cout<<"this is method"<<endl;
     }
 
