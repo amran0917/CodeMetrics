@@ -13,12 +13,82 @@ using namespace std;
 string str,str1;
 
 int linecounter=0;
- int wcount=0;
- int comment=0;
+int wcount=0;
+int comment=0;
 int  variablecount=0;
+int countmethod = 0;
 
 ifstream ifile;
 ofstream ofile;
+
+void  countMethod()
+{
+    string s;
+    string s1="";
+    string temp;
+    char ch;
+
+    ifile.open("SPL_1.java");
+	ofile.open("output.java");
+
+    if(ifile.is_open())
+    {
+
+        while(getline(ifile,s))
+        {
+
+            int n = s.length();
+            char arr[n];
+
+            for(int i=0;i<s.length();i++)
+            {
+                    if(s[i]=='('){
+
+                            ch=s[i];
+                            break;
+                    }
+
+                    else
+                    {
+                        arr[i]=s[i];
+                    }
+
+
+        }
+            s=arr;
+            istringstream iss(s);
+
+            int len=0;
+
+            while(iss>>s){
+
+                    temp = s;
+                    len++;
+           }
+
+
+            if((len==2||len==3)&&ch=='(' && s[n-1]!=';')
+            {
+                   // cout<<"this is method"<<endl;
+                   countmethod++;
+            }
+
+            else
+            {
+                cout<<"haire gada" << endl;
+           }
+
+
+
+        }
+
+    }
+
+    cout<< "Hey Number Of Method in here " << countmethod<<endl;
+
+    ifile.close();
+
+}
 
 
 
@@ -54,7 +124,7 @@ ofstream ofile;
 void countCommentlineNumber()
  {
 
-    ifile.open("test file 1.c");
+    ifile.open("SPL_1.java");
     ofile.open("output.java");
 
     while(getline(ifile,str))
@@ -68,7 +138,7 @@ void countCommentlineNumber()
                 if(str[i]=='/' && str[i+1]=='/')
                 {
                         comment++;
-                        //break;
+                        break;
 
                 }
             }
@@ -103,8 +173,8 @@ void countCommentlineNumber()
         }
     }
     //return comment;
-    cout << comment << endl;
-        ofile<<"Total commentLine Number: " << comment<<endl;
+   // cout << comment << endl;
+        ofile<<"Total commentLine Number: " << (comment-1)<<endl;
  }
 
 int withoutBlankLinecount(string &str)
@@ -154,14 +224,16 @@ void openfile()
             withoutBlankLinecount(str);
 
            countPrimitiveVariable(str);
+          // countMethod(str);
            //countCommentlineNumber();
 
         }
-            ofile<<"Blank line of code :"<<wcount<<endl;
+           /* ofile<<"Blank line of code :"<<wcount<<endl;
             ofile<<"Total line of code: "<< linecounter<<endl;
             ofile<<"Exact line without blank line : " << (linecounter-wcount)<<endl;
 			// ofile<<"Comment line of code: "<< comment<<endl;
-            ofile<<"Number of primitive variable: " << variablecount<<endl;
+            ofile<<"Number of primitive variable: " << variablecount<<endl;*/
+
 
 	}
 
@@ -178,6 +250,7 @@ int main()
 {
 	openfile();
 	//countCommentlineNumber();
+	//countMethod();
 
 
 	return 0;
