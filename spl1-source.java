@@ -1,4 +1,5 @@
 
+
 Public class SPL_1{
 
     public static void main(String [] args)
@@ -6,18 +7,28 @@ Public class SPL_1{
 
         Scanner input = new Scanner(System.in); // scan from user
         SPL_1 spl;
-        spl = new SPL_1();
+        spl = new SPL_1(); // creating a object
 
 
-        int a,f;  ///////declaration integer
+        int a,f; // ///////declaration integer
         float f; // declaration float
 
-        a = input.nextInt(); // take input integer
+        a = input.nextInt(); // take input
         f = input.nextDouble(); // take float
        /*
         d = input.nextDouble();
         s = "amarn";
         System.out.println("amra"); */
+
+
+        public void getName ()
+        {
+
+        }
+
+        public void setName(String name){
+
+        }
 
     }
 }
