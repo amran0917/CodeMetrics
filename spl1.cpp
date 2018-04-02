@@ -1,8 +1,4 @@
 
-## few erroe detection###
-
-
-
 #include<bits/stdc++.h>
 #include<iostream>
 #include<fstream>
@@ -39,8 +35,6 @@ void  countMethod()
 
         while(getline(ifile,s))
         {
-
-
 
             int n = s.length();
             temp = s;
