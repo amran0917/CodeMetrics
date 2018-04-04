@@ -1,4 +1,5 @@
 
+
 #include<bits/stdc++.h>
 #include<iostream>
 #include<fstream>
@@ -18,6 +19,91 @@ int countmethod = 0;
 
 ifstream ifile;
 ofstream ofile;
+
+void countCoupling()
+{
+
+        int countCu=0;
+      ifile.open("SPL_1.java");
+      ofile.open("output.java");
+
+      if(ifile.is_open())
+    {
+
+        while(getline(ifile,str))
+        {
+            int len = str.length();
+
+            for(int i=0;i<len;i++)
+            {
+                if(str[i]=='.')// && str[len-1]==';')
+                {
+                        countCu++;
+
+
+                }
+            }
+        }
+
+    }
+     ifile.close();
+
+     cout<< "The number OF coupling is:" << countCu << endl;
+
+
+}
+
+void countParameter()
+{
+    ifile.open("SPL_1.java");
+	ofile.open("output.java");
+
+	int flag=0;
+
+	int countl=0;
+	string s;
+
+
+	if(ifile.is_open())
+    {
+
+        while(getline(ifile,s))
+        {
+
+            for(int i=0;i<s.length();i++)
+            {
+                if(s[s.length()-1]==';') break;
+
+                else if(s[i]=='(')
+                {
+
+                    for(int j=i;j<s.length();j++)
+                    {
+                            flag=0;
+                       if (s[j]==',')
+                       {
+                            flag=0;
+                           countl++;
+
+                       }
+
+                    }
+
+
+              }
+
+           }
+
+        }
+    }
+
+    if(countl==0 && flag==1) cout<<countl<< endl;
+    else if (flag==0) cout<<countl+1<< endl;
+
+    ifile.close();
+
+}
+
 
 void  countMethod()
 {
@@ -261,7 +347,10 @@ int main()
 {
 	openfile();
 	//countCommentlineNumber();
-	countMethod();
+	//countMethod();
+	//countParameter();
+	countCoupling();
+
 
 
 	return 0;
