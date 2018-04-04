@@ -1,34 +1,39 @@
 
 
+
 Public class SPL_1{
 
     public static void main(String [] args)
     {
 
-        Scanner input = new Scanner(System.in); // scan from user
+        Scanner input = new Scanner(System.in);
         SPL_1 spl;
-        spl = new SPL_1(); // creating a object
+        spl = new SPL_1();
 
 
-        int a,f; // ///////declaration integer
-        float f; // declaration float
+        int a,b;
+        float f;
+        a = input.nextInt();
+        f = input.nextDouble();
 
-        a = input.nextInt(); // take input
-        f = input.nextDouble(); // take float
-       /*
-        d = input.nextDouble();
-        s = "amarn";
-        System.out.println("amra"); */
 
+            //coupling
+            a.getAddResult();
+            f.getMult();
 
         public void getName ()
         {
 
         }
 
-        public void setName(String name){
-
+        public void getdivide(int a,int v)
+        {
+            int res =(int) v/a;
         }
+
+        double c = getdivide(30,56); // cohesion
+
+        system.out.println();
 
     }
 }
