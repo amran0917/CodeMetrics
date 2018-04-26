@@ -37,7 +37,7 @@ int main ()
 
     //cout<<s<<endl;
     int len=0;
-  //  int len1=0;
+
     while(iss>>s){
                     temp = s;
        // if(temp=="public" || temp== "private" || temp == "protected")
