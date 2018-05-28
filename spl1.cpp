@@ -48,10 +48,13 @@ void countCoupling()
     }
      ifile.close();
 
-     cout<< "The number OF coupling is:" << countCu << endl;
+  //   cout<< "The number OF coupling is:" << countCu << endl;
 
 
 }
+
+ //****  Parameter ****####/// 
+
 
 void countParameter()
 {
@@ -103,6 +106,9 @@ void countParameter()
     ifile.close();
 
 }
+
+
+/* method count*/
 
 
 void  countMethod()
@@ -343,7 +349,8 @@ void  countMethod()
     }
 
     return variablecount;
- }*/
+ }
+ */
 
 
 void countCommentlineNumber()
@@ -376,8 +383,9 @@ void countCommentlineNumber()
                 {
                 	//cout << s << endl;
                     //comment1++;
-					flag=1;
-					break;
+			
+			flag=1;
+			break;
                 }
 
                 else if(s[i]=='*' && s[i+1]=='/' && flag == 1)
@@ -395,10 +403,11 @@ void countCommentlineNumber()
 
             }
 
-			if(flag==1) {
+		if(flag==1) 
+		{
 			    //cout << s <<endl;
-                comment1++;
-			}
+                	comment1++;
+		}
         }
     }
 
@@ -423,6 +432,8 @@ int withoutBlankLinecount(string &str)
             return wcount;
 }
 
+//****** LineCount *****//
+
 int countTotalLineOfCode(string &str)
 {
 
@@ -431,6 +442,7 @@ int countTotalLineOfCode(string &str)
 			return linecounter;
 }
 
+// **** file open ***** //
 
 void openfile()
 {
@@ -481,8 +493,7 @@ int main()
 	//countMethod();
 	//countParameter();
 	//countCoupling();
-	countvariable();
-
+	//countvariable();
 
 
 	return 0;
