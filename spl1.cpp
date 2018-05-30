@@ -20,12 +20,12 @@ int doCount=0;
 ifstream ifile;
 ofstream ofile;
 
-void countCoupling()
+/*void countCoupling()
 {
 
-        int countCu=0;
-      ifile.open("SPL_1.java");
-      ofile.open("output.java");
+       int countCu=0;
+      ifile.open("Student.java");
+     // ofile.open("output.java");
 
       if(ifile.is_open())
     {
@@ -48,17 +48,14 @@ void countCoupling()
     }
      ifile.close();
 
-  //   cout<< "The number OF coupling is:" << countCu << endl;
+     cout<< "The number OF coupling is:" << countCu << endl;
 
 
-}
-
- //****  Parameter ****####/// 
-
+}*/
 
 void countParameter()
 {
-    ifile.open("E:\\My File\\spl\\SPL_1.java");
+     ifile.open("SPL.java");
 	//ofile.open("output.java");
 
 	int flag=0;
@@ -69,7 +66,7 @@ void countParameter()
 
 	if(ifile.is_open())
     {
-		//cout << "dsgsdg" << endl;
+		
         while(getline(ifile,s))
         {
 
@@ -102,15 +99,10 @@ void countParameter()
 
     //if(countl==0 && flag==1) cout<<countl<< endl;
     //else if (flag==0) cout<<countl+1<< endl;
-	cout<<countl;
+	cout<<"Parameter Number: " << countl << endl;
     ifile.close();
 
 }
-
-
-/* method count*/
-
-
 void  countMethod()
 {
     bool flag = false;
@@ -118,28 +110,29 @@ void  countMethod()
     string s1="";
     string temp;
     char ch;
+    int x=0;
 
-    ifile.open("SPL_1.java");
-    ofile.open("output.java");
+    ifile.open("SPL.java");
+    //ofile.open("Output.java");    
 
     if(ifile.is_open())
     {
-		//cout << "hoise " << endl;
+
         while(getline(ifile,s))
         {
 
             int n = s.length();
-           // cout<<"strlength "<<n<<endl;
-
-            temp = s;
-            char arr[n];
-
-            for(int j=0;j<s.length()-1;j++)
+            //cout<<"strlength "<<n<<endl;
+            
+          
+       //custom method
+    
+            for(int j=0; j<s.length()-1; j++)  
             {
-               if(s[j]=='('&&s[s.length()-2]==';')
+               if(s[j]=='(' && s [s.length()-1]==';')
                {
-               		 cout<<s<<endl;
-               		 cout<<"gghfgdtdyh"<<s.length()<<endl;
+               		 //cout<<s<<endl;
+               		
                      countmethod++;
 
                }
@@ -148,77 +141,77 @@ void  countMethod()
 
 
 	    //...custom method count
-
-
-		for(int i=0; i<s.length()-1; i++){
-			 if(s[i]=='('&&s[s.length()-2]!=';'){
-               		// cout<<s<<endl;
-                    countCustomMethod++;
-                    break;
-
-               }
-		}
-
-
-        if(s.length()>=5){
+	    
+	    //default method..
+	    
+	      if(s.length()>5){
 
 		for(int i=0; i<s.length()-5; i++){
-
+		
 			if(s[i]=='f'&&s[i+1]=='o'&&s[i+2]=='r')
 			{
-			    cout<<s<<endl;
+			    //cout<<s<<endl;
 			    countExtraDefault++;
 			   // cout<<"for"<<endl;
-			}
-
+			}	
+			
 			else if(s[i]=='w'&&s[i+1]=='h'&&s[i+2]=='i'&&s[i+3]=='l'&&s[i+4]=='e')
 			{
-			    cout<<s<<endl;
+			   // cout<<s<<endl;
 			    countExtraDefault++;
 			     // cout<<"while"<<endl;
-			}
-
+			}	
+			
 			else if(s[i]=='d'&&s[i+1]=='o'&&s[i+2]!='u')
 			{
-
-			    cout<<s<<endl;
+			
+			   // cout<<s<<endl;
 			    countExtraDefault++;
-
+			  
 			     // cout<<"do"<<endl;
-			}
-
+			}	
+			
 			else if(s[i]=='m'&&s[i+1]=='a'&&s[i+2]=='i'&&s[i+3]=='n')
 			{
-			    cout<<s<<endl;
+			    //cout<<s<<endl;
 			    countExtraDefault++;
 			     // cout<<"main"<<endl;
 			}
-
-
+			
+			else if(s[i]=='.'&&s[i+1]=='o'&&s[i+2]=='u'&&s[i+3]=='t'&&s[i+4]=='.')
+			{
+			    //cout<<s<<endl;
+			     x=x+1;
+			    // cout<<"println"<<endl;
+			}
+			
+			
+				
+		   }
 		}
-		}
+	    //default method..
+	   
+	   	
+  
 
-
-
+   
+    
     }
-
-
-
-
     }
     ifile.close();
-
-     cout<<"total method: "<< countmethod + countExtraDefault <<endl;
-     cout<<"custom method"<<countCustomMethod - countExtraDefault<<endl;
+    
+     cout<<"total method: "<< countmethod+countExtraDefault<<endl;
+    // cout<<"custom method: "<<countmethod<<endl;
 
 }
 
-
- void countvariable()
+void countvariable()
 
 {
-  ifstream ifile ;
-    ifile.open("SPL_1.java");
+   	ifstream ifile ;
+	ofstream ofile;
+    ifile.open("SPL.java");
+	//ofile.open("Output.java");
     string s;
     istringstream iss;
     int countv=0,flag=0;
@@ -229,6 +222,7 @@ void  countMethod()
         while(getline(ifile,s))
         {
             iss >> s;
+			flag=0;
 
             int n = s.length();
             char charArr[n+1];
@@ -237,120 +231,117 @@ void  countMethod()
 
             strcpy(charArr,s.c_str());
 
-            for(i=0;i<n;i++){
+            for(i=0;i<n;i++)
+			{
 
                 if((charArr[i] >= 65 && charArr[i]<=90 ) || (charArr[i] >= 97 && charArr[i]<=122 )){
                     break;
                 }
             }
-            for(j=0;i<=n;i++,j++){
-                charArr2[j] = charArr[i];
 
+            for(j=0;i<=n;i++,j++)
+			{
+                charArr2[j] = charArr[i];
             }
 
             for(i=0,j=0;i<=n;i++){
                if(charArr[i]==' ')continue;
-               else{
-                charArr3[j]=charArr[i];
-                j++;
+               else
+				{    
+					charArr3[j]=charArr[i];
+                	j++;
                }
-
             }
+
             for(j=0;charArr3[j]!='\0';j++){
 
                 if(charArr3[j] == '=' && charArr3[j+1]!='='){
                     if(j+3 < strlen(charArr3)){
                         if(charArr3[j+1]=='n' && charArr3[j+2]=='e' && charArr3[j+3]=='w'){
                             countv++;
+							//cout << charArr << endl;
                         }
 
                     }
                 }
             }
 
-
-
-            cout << charArr << endl;
-            cout << charArr2 << endl;
-            cout << charArr3 << endl;
-
+			
             char *p = strtok(charArr2," ");
 
             while(p){
-                //cout << p <<" - ";
-
-                if(!strcmp("int",p) || !strcmp("double",p) || !strcmp("float",p) || !strcmp("boolean",p) || !strcmp("char",p) || !strcmp("String",p) || !strcmp("byte",p) ){
+                
+				
+                if(!strcmp("int",p) || !strcmp("double",p) || !strcmp("float",p) || !strcmp("boolean",p) || !strcmp("char",p) || !strcmp	("String",p) || !strcmp("byte",p)){
                     flag=1;
 
-
                 }
+
+
                 char *q=p;
                 int i=0;
 
                 if(flag == 1){
-                    while(q[i]){
 
-                        if(q[i]==','){
-                            countv++;
-                            flag=2;
+					for(i=0;i<n;i++){
 
-                        }
-                        i++;
-                    }
-                }
+						if(charArr[i]==';'){
+							
+                			flag=2;
+							
+						}
+					}
+				}
+				if(flag==2){
+
+		             while(q[i]){
+
+		                 if(q[i]==',')
+						{
+							
+								countv++;
+								//cout << charArr << endl;	
+		                 		flag=3;
+							
+
+		                }
+
+		                i++;
+		            }
+				}
                 p = strtok(NULL," ");
             }
-            cout <<  endl;
 
-            if(flag==1) {
-                countv++;
-                flag=0;
+            if(flag==2) {
+
+				for(i=0;i<n;i++){
+
+					if(charArr[i]==';'){
+						countv++;
+						//cout << charArr << endl;
+                
+					}
+				}
+				flag=0;    
             }
-            else if(flag==2) {
+            else if(flag==3) {
                 countv++;
+				//cout << charArr << endl;
                 flag=0;
             }
 
         }
-                        // if(s[i]=='=' && s[i+1]!= '=') countv++;
 
-        if(countv) cout << countv<< endl;
+		//if(countv) ofile << "Total Variable number : "<<countv<< endl;
 
+		
 
     }
-
-
-
+	cout << "Total Variable number : "<<countv<< endl;
+	ifile.close();
+	
 
 }
-/* int countPrimitiveVariable(string &str)
- {
-
-   istringstream iss;
-   iss.str(str);
-   string value,s;
-
-    for(int j=0;j<str.length();j++)
-    {
-            iss>>value;
-
-            if(value=="int" || value=="char" || value=="float" || value=="double" || value=="boolean"   || value == "byte" || value=="short"|| value=="long")
-            {
-                    s = value;
-                    iss>>value;
-                    for(int i=0;i<value.length();i++)
-                    {
-                        if(value[i]==',' || value[i]==';' ) variablecount++;
-
-                    }
-            }
-
-
-    }
-
-    return variablecount;
- }
- */
 
 
 void countCommentlineNumber()
@@ -359,10 +350,8 @@ void countCommentlineNumber()
 	int comment1=0;
 	string s;
 
-    ifile.open("SPL_1.java");
-    ofile.open("output.java");
-
-
+    ifile.open("SPL.java");
+	//ofile.open("Output.java");
 
 	if(ifile.is_open())
 	{
@@ -381,20 +370,12 @@ void countCommentlineNumber()
                 }
                 else if(s[i]=='/' && s[i+1]=='*')
                 {
-                	//cout << s << endl;
-                    //comment1++;
-			
-			flag=1;
-			break;
+					flag=1;
+					break;
                 }
 
                 else if(s[i]=='*' && s[i+1]=='/' && flag == 1)
                 {
-                    if(i ==0 || i ==1 || i ==2){
-
-                        flag=0;
-                        break;
-                    }
                     comment1++;
                     //cout << s << endl;
 					flag=0;
@@ -403,15 +384,17 @@ void countCommentlineNumber()
 
             }
 
-		if(flag==1) 
-		{
-			    //cout << s <<endl;
-                	comment1++;
-		}
+			if(flag==1) {
+			    //cout << s << endl;
+                comment1++;
+			}
         }
     }
 
         cout<<"Total commentLine Number: " << comment1<<endl;
+	   //ofile<<"Totlal commentLine Number: " << comment1<<endl;
+
+	ifile.close();
  }
 
 int withoutBlankLinecount(string &str)
@@ -432,8 +415,6 @@ int withoutBlankLinecount(string &str)
             return wcount;
 }
 
-//****** LineCount *****//
-
 int countTotalLineOfCode(string &str)
 {
 
@@ -442,15 +423,14 @@ int countTotalLineOfCode(string &str)
 			return linecounter;
 }
 
-// **** file open ***** //
 
 void openfile()
 {
 
-	ifile.open("SPL_1.java");
-	ofile.open("output.java");
+	 ifile.open("Student.java");
+	//ofile.open("output.java");
 
-    // countCommentlineNumber();
+     countCommentlineNumber();
 
 
 	if(ifile.is_open())
@@ -459,7 +439,7 @@ void openfile()
 
 		while(getline(ifile,str))
 		{
-            countTotalLineOfCode(str);
+           countTotalLineOfCode(str);
 
             withoutBlankLinecount(str);
 
@@ -468,11 +448,11 @@ void openfile()
            //countCommentlineNumber();
 
         }
-           /* ofile<<"Blank line of code :"<<wcount<<endl;
-            ofile<<"Total line of code: "<< linecounter<<endl;
-            ofile<<"Exact line without blank line : " << (linecounter-wcount)<<endl;
+          //  cout<<"Blank line of code :"<<wcount<<endl;
+           cout<<"Total line of code: "<< linecounter<<endl;
+           // cout<<"Exact line without blank line : " << (linecounter-wcount)<<endl;
 			// ofile<<"Comment line of code: "<< comment<<endl;
-            ofile<<"Number of primitive variable: " << variablecount<<endl;*/
+            //ofile<<"Number of primitive variable: " << variablecount<<endl;*/
 
 
 	}
@@ -488,12 +468,16 @@ void openfile()
 
 int main()
 {
+
+	countvariable();
+	countParameter();
 	//openfile();
-	countCommentlineNumber();
-	//countMethod();
-	//countParameter();
-	//countCoupling();
-	//countvariable();
+	//countCommentlineNumber();
+	countMethod();
+	
+	
+	
+
 
 
 	return 0;
